@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI文案生成系统</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="card">
+      <h1>你的专属 AI 文案生成器</h1>
+      <p class="hint">输入关键词，点击生成，一键复制可直接使用。</p>
+
+      <label for="keywords">关键词</label>
+      <input id="keywords" type="text" placeholder="例如：护肤、熬夜、补水" />
+
+      <div class="actions">
+        <button id="generateBtn">生成文案</button>
+        <button id="copyBtn" class="secondary">一键复制</button>
+      </div>
+
+      <label for="output">生成结果</label>
+      <textarea id="output" rows="8" readonly placeholder="生成结果会显示在这里"></textarea>
+      <p id="status" class="status"></p>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
