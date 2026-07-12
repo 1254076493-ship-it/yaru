@@ -18,6 +18,7 @@ def validate_result(result: dict, cta_keyword: str) -> dict:
     if not 480<=sl<=520: issues.append(_issue("short_length","fail","短文应为480—520字。",str(sl)))
     if not 850<=ll<=930: issues.append(_issue("long_length","fail","长文应为850—930字。",str(ll)))
     for name,text in zip(("短文","长文"),texts):
-        if text.count("\n\n")<3 or not all(x in text for x in ("🧭","🍶","🖐️","📌")): issues.append(_issue("layout","fail",f"{name}缺少小标题、Emoji或清晰分段。"))
+        markers=("🧭","🔎","🍶","🖐️","📋","🌿","⚠️","✅","📝")
+        if text.count("\n\n")<3 or sum(x in text for x in markers)<4: issues.append(_issue("layout","fail",f"{name}缺少小标题、Emoji或清晰分段。"))
     failed=any(x["level"]=="fail" for x in issues)
     return {"status":"fail" if failed else ("warning" if issues else "pass"),"issues":issues,"metrics":{"title_count":len(titles),"short_length":sl,"long_length":ll}}
